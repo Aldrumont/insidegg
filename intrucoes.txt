@@ -1,0 +1,4 @@
+0 - criar env e instalar os requirements
+1 - rodar get_videos
+2 - rodar detect_colors.py
+3 - rodar extract_frames.py
