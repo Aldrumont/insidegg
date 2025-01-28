@@ -67,7 +67,7 @@ def generate_points(img, draw_points=False):
 
 def read_and_extract_frames(egg_data_table_path, color_data_table_path, colors, frames_per_color, num_eggs, selection_mode='sequential',
                             specific_videos=None, offset=10, cut_frame_dict=None, min_index=0, max_index=1000, videos_folder_path='videos',
-                            frames_folder_path='frames'):
+                            frames_folder_path='frames', points='center'):
 
     # Load the table
     df_egg_data = pd.read_excel(egg_data_table_path)
@@ -75,7 +75,6 @@ def read_and_extract_frames(egg_data_table_path, color_data_table_path, colors, 
     df_color_data = df_color_data.dropna()
 
     colors = [color.lower() for color in colors]
-    points = []
     # Determine the eggs to process based on the selection mode
     if selection_mode == 'random':
         df_egg_data = df_egg_data[df_egg_data['Índice'] >= min_index]
@@ -131,6 +130,8 @@ def read_and_extract_frames(egg_data_table_path, color_data_table_path, colors, 
                                 # break
                             frame = frame[cut_frame_dict['min_height']:cut_frame_dict['max_height'],
                                             cut_frame_dict['min_width']:cut_frame_dict['max_width']]
+                            if points == 'center':
+                                points = [[frame.shape[1] // 2, frame.shape[0] // 2]]
                             if not points:
                                 copy_frame = frame.copy()
                                 points = generate_points(copy_frame, draw_points=True)
