@@ -219,7 +219,6 @@ colors_background_parameters_dict = {
 }
 
 colors_to_extract = ['blue','red','white','green']
-colors_to_extract = ['green']
 frames_per_color = 36 # 360/40 = 9 frames per color
 num_eggs = 1000
 selection_mode = 'random'  # Can be 'random', 'sequential', or 'specific'
