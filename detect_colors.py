@@ -103,6 +103,6 @@ watch_video_option = False
 
 # Processar todos os vídeos na pasta e gerar a tabela
 result_table = process_all_videos('videos', watch_video=watch_video_option, limit=None, randomize=False)
-result_table.to_csv("color_start_times.csv", index=False)
+result_table.to_excel("color_start_times.xlsx", index=False)
 
 cv2.destroyAllWindows()
