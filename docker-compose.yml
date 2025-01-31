@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - KAGGLE_USERNAME=${KAGGLE_USERNAME}  # Pass the username as a build argument
+        - KAGGLE_KEY=${KAGGLE_KEY}  # Pass the key as a build argument
+    runtime: nvidia  # Enable GPU support
+    env_file: .env  # Load environment variables from .env
+    environment:
+      - KAGGLE_USERNAME=${KAGGLE_USERNAME}  # Pass the username at runtime
+      - KAGGLE_KEY=${KAGGLE_KEY}  # Pass the key at runtime
+      - NVIDIA_VISIBLE_DEVICES=all  # Make all GPUs visible
+    volumes:
+      - .:/app  # Mount the current directory into the container
+    command: tail -f /dev/null  # Keep the container running
