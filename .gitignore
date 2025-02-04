@@ -8,3 +8,4 @@ frames_train
 model_history*
 *.png
 *.keras
+training_history*
