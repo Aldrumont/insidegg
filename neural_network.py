@@ -369,14 +369,14 @@ def main():
     X_train, Y_train, _ = load_all_data(train_indexes, COLORS, [1, 2], FRAMES_FOLDER_PATH,
                                         resize_ratio, df_result, num_augmentations=0,
                                         grayscale=GRAYSCALE, augment=True, max_frames_by_color=MAX_FRAMES_BY_COLOR,
-                                        pct_noise=0.02, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=2)
+                                        pct_noise=0.02, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=None)
     X_val, Y_val, _ = load_all_data(validation_indexes, COLORS, [1, 2], FRAMES_FOLDER_PATH,
                                     resize_ratio, df_result, num_augmentations=0,
                                     grayscale=GRAYSCALE, augment=True, max_frames_by_color=MAX_FRAMES_BY_COLOR,
-                                    pct_noise=0.02, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=2)
+                                    pct_noise=0.02, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=None)
     X_test, Y_test, _ = load_all_data(test_indexes, COLORS, [1, 2], FRAMES_FOLDER_PATH,
                                       resize_ratio, df_result, augment=False, shuffle=False,
-                                      max_frames_by_color=MAX_FRAMES_BY_COLOR, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=2)
+                                      max_frames_by_color=MAX_FRAMES_BY_COLOR, final_frame_shape=FINAL_FRAME_SHAPE, max_amount=None)
     
     # Concatenar e separar novamente treino/validação
     new_X = np.concatenate((X_train, X_val), axis=0)
@@ -450,7 +450,7 @@ def main():
     
     # Treinamento do modelo
     batch_size = 50
-    epochs = 2
+    epochs = 10000
     history = model.fit(
         X_train,
         Y_train,
