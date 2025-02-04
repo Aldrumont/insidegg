@@ -2,3 +2,9 @@ frames/
 frames_original/
 videos/
 .env
+frames_train/645_40.jpg
+logs/*
+frames_train
+model_history*
+*.png
+*.keras
