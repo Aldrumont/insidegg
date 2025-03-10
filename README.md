@@ -10,7 +10,7 @@ The complete dissertation is currently awaiting publication by the University of
 
 The dataset containing all captured videos and measured masses is available on Kaggle:
 
-- 📊 [Insidegg Dataset (Kaggle)](https://kaggle.com/aldrumont/insidegg)
+- 📊 [Insidegg Dataset (Kaggle)](https://www.kaggle.com/datasets/aldrumont/insidegg-v2)
 
 The final trained models are provided in the `final_models` directory.  
 The prototype source code for image capturing is available in the `raspi` directory.
