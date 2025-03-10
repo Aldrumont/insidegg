@@ -2,7 +2,7 @@
 
 This project aims to develop an automated method to estimate the mass of chicken egg components (yolk, albumen, and shell) without breaking the eggs, using advanced Computer Vision and Artificial Intelligence techniques.
 
-![PROJECT GIF HERE]
+![Project Demo](assets/output.gif)
 
 ## About the Project
 
