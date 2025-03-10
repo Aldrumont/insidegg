@@ -1,36 +1,34 @@
-FROM ultralytics/ultralytics:8.2.98
+FROM tensorflow/tensorflow:2.15.0-gpu
 
-# Atualiza os repositórios e instala o Python, pip, git e outras dependências básicas
+# Evita interação ao instalar pacotes e configura timezone automaticamente
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Dublin
+
+# Atualiza os repositórios e instala Python, pip, git e dependências adicionais
 RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
     git \
+    screen \
+    nano \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
     && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
-
-# Cria um link simbólico para facilitar o uso do comando "python"
-RUN ln -s /usr/bin/python3 /usr/bin/python
 
 # Define o diretório de trabalho
 WORKDIR /app
 
-# Define argumentos de build para as credenciais do Kaggle
+# Define argumentos de build para credenciais Kaggle
 ARG KAGGLE_USERNAME
 ARG KAGGLE_KEY
 
-# Cria o diretório .kaggle e gera o arquivo kaggle.json com as credenciais
+# Configura Kaggle API
 RUN mkdir -p /root/.kaggle && \
     echo '{"username":"'$KAGGLE_USERNAME'","key":"'$KAGGLE_KEY'"}' > /root/.kaggle/kaggle.json && \
     chmod 600 /root/.kaggle/kaggle.json
 
-
-
-# Copia o arquivo requirements.txt para o diretório de trabalho
+# Copia o requirements.txt e instala dependências Python
 COPY requirements.txt .
-
-# Instala as dependências listadas no requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Mantém o container em execução
+# Mantém o container rodando
 CMD ["tail", "-f", "/dev/null"]
