@@ -4,7 +4,7 @@ This project aims to develop an automated method to estimate the mass of chicken
 
 <p align="center">
   <!-- insert video final_result.mp4 with autoplay -->
-  <video src="final_result.mp4" autoplay muted loop width="45%"></video>
+  <video src="assets/final_result.mp4" autoplay muted loop width="45%"></video>
   <img src="assets/image.jpg" width="45%" />
 </p>
 
